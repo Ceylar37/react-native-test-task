@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native'
 import {useAppDispatch} from "../../store";
 import Footer from "../Footer/Footer";
 
-const windowWidth = Dimensions.get('window').width - 20
+const windowWidth = Dimensions.get('window').width - 30
 const imageSize = windowWidth / 4
 
 function PhotosList({photos}) {
@@ -73,8 +73,9 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        alignContent: "center",
-        justifyContent: "center"
+        display: "flex",
+        alignItems: "center",
+        marginTop: 10
     },
     hearthIcon: {
         position: "absolute",

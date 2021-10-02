@@ -10,6 +10,7 @@ import {photosActions} from "../store/photosReducer";
 import {useEffect} from "react";
 import Gallery from "./Gallery/Gallery";
 import Photo from "./Photo/Photo";
+import Header from "./Header/Header";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +29,7 @@ const Navigation = () => {
                         <HStack space={2} alignItems="center">
                             <Spinner accessibilityLabel="Loading posts" size={"lg"}/>
                             <Heading color="primary.500" fontSize="md">
-                                Loading
+                                Загрузка
                             </Heading>
                         </HStack>
                     </Center>
@@ -42,28 +43,22 @@ const Navigation = () => {
                     name='Gallery'
                     component={Gallery}
                     options={{
-                        title: 'Галерея',
-                        headerStyle: {
-                            backgroundColor: '#800698',
 
-                        },
-                        headerTintColor: '#fff',
-                        headerTitleAlign: "center",
-
+                        header: () => <Header headerTitle={'Все изображения'}/>
                     }}
                 />
                 <Stack.Screen
                     name={'Favorites'}
                     component={Favorites}
                     options={{
-                        title: 'Избранное',
+                        header: () => <Header headerTitle={'Избранное'}/>
                     }}
                 />
                 <Stack.Screen
                     name={'Photo'}
                     component={Photo}
                 options={{
-                    title: 'img-' + photosState.curPhoto?.id
+                    header: () => <Header headerTitle={'img-' + photosState.curPhoto?.id} isBackButtonEnable={true}/>
                 }}/>
             </Stack.Navigator>
         </NativeBaseProvider>

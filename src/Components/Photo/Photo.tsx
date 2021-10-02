@@ -24,7 +24,7 @@ const Photo = () => {
             </View>
             <View style={styles.buttonsContainer}>
                 <Button
-                    style={{backgroundColor: 'white'}}
+                    style={{backgroundColor: 'white', borderBottomWidth: 2, borderBottomColor: 'gray'}}
                     disabled={isToggleFavoriteDisabled}
                     size="lg"
                     variant="subtle" onPress={(e) => {
@@ -40,12 +40,13 @@ const Photo = () => {
                     }
                 </Button>
                 <Button
+                    disabled={isDeleteDisabled}
                     style={{backgroundColor: 'white'}}
                     size="lg"
                     variant="subtle" onPress={() => {
                         setIsDeleteDisabled(true)
                         dispatch(photosActions.deletePhoto())
-                        navigation.navigate('Gallery')
+                        navigation.goBack()
                 }}
                 >
                     🗑 Удалить изображение
